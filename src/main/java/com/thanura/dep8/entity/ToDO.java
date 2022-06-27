@@ -6,6 +6,8 @@ import lombok.Generated;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Time;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,6 +19,8 @@ public class ToDO {
     private int id;
     @Column(nullable = false)
     private String todo;
+    private Date date;
+    private Time time;
 
     @ManyToOne
     @JoinColumn(name = "user_id",referencedColumnName = "id",nullable = false)
@@ -25,5 +29,11 @@ public class ToDO {
     public ToDO(int id, String todo) {
         this.id = id;
         this.todo = todo;
+    }
+
+    public ToDO(int id, String todo, User user) {
+        this.id = id;
+        this.todo = todo;
+        this.user = user;
     }
 }
