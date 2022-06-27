@@ -11,8 +11,7 @@ import javax.persistence.*;
 @Entity
 public class User implements SuperEntity {
      @Id
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private int id;
+     private String id;
      @Column(name = "fullname",nullable = false)
      private String fullName;
      @Column(nullable = false,unique = true)
