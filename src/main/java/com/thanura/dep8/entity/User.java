@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class User implements SuperEntity {
      @Id
      private String id;
-     @Column(name = "fullname",nullable = false)
+     @Column(name = "full_name",nullable = false)
      private String fullName;
      @Column(nullable = false,unique = true)
      private String email;
