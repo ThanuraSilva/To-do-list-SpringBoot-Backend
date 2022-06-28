@@ -21,6 +21,7 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = "application/json",produces = "application/json")
     public UserDTO registerUser(@RequestBody @Valid UserDTO user, Errors errors){
       if(errors.hasFieldErrors()){
