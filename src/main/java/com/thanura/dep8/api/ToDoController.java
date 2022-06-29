@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("api/v1/users/{userId:[A-Fa-f0-9\\-]{36}}/notes")
+@RequestMapping("api/v1/users/{userId:[A-Fa-f0-9\\-]{36}}/todo")
 public class ToDoController {
 
     public ToDoService toDoService;
@@ -30,7 +30,8 @@ public class ToDoController {
         return toDoService.saveToDo(toDo);
 
     }
-    @DeleteMapping(path = "{userId:\\d+}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping(path = "/{toDoID:\\d+}")
     public void deleteToDo(@PathVariable String userId,int toDoId){
         toDoService.deleteToDo(userId, toDoId);
 

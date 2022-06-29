@@ -5,10 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ToDoDTO {
+public class ToDoDTO implements Serializable {
     private int id;
     private String todo;
     private String userId;

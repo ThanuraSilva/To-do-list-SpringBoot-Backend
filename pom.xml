@@ -7,6 +7,7 @@
     <groupId>com.thanura.dep8</groupId>
     <artifactId>To-do-list-back-end</artifactId>
     <version>1.0.0</version>
+    <name>ToDoList-Backend</name>
     <packaging>war</packaging>
 
     <properties>
@@ -16,12 +17,6 @@
         <spring-version>5.3.21</spring-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.1</version>
-    </parent>
 
     <dependencies>
         <dependency>
@@ -61,6 +56,11 @@
             <version>3.1.0</version>
         </dependency>
     </dependencies>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.1</version>
+    </parent>
 
     <build>
         <plugins>
@@ -78,7 +78,4 @@
             </plugin>
         </plugins>
     </build>
-
-
-
 </project>

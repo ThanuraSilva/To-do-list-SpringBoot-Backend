@@ -19,21 +19,24 @@ public class ToDO {
     private int id;
     @Column(nullable = false)
     private String todo;
+    @Column()
     private Date date;
+    @Column()
     private Time time;
 
     @ManyToOne
     @JoinColumn(name = "user_id",referencedColumnName = "id",nullable = false)
     private User user;
 
-    public ToDO(int id, String todo) {
-        this.id = id;
+    public ToDO(String todo, User user) {
         this.todo = todo;
+        this.user = user;
     }
 
-    public ToDO(int id, String todo, User user) {
-        this.id = id;
+    public ToDO(String todo, Date date, Time time, User user) {
         this.todo = todo;
+        this.date = date;
+        this.time = time;
         this.user = user;
     }
 }

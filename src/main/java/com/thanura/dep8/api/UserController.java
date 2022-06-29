@@ -43,11 +43,11 @@ public class UserController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping(path = "{/userId:[A-Fa-f0-9\\-]{36}}")
+    @DeleteMapping(path = "/{userId:[A-Fa-f0-9\\-]{36}}")
     public void deleteUser(@PathVariable String userId){
         throw new ResponseStatusException(HttpStatus.NOT_FOUND,"User Deleted");
     }
-    @GetMapping(path = "{/userId:[A-Fa-f0-9\\-]{36}}",produces = "application/json")
+    @GetMapping(path = "/{userId:[A-Fa-f0-9\\-]{36}}",produces = "application/json")
     public UserDTO getUserInfo(@PathVariable String userId){
         return userService.getUserInfo(userId);
     }

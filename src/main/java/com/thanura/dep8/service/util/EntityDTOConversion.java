@@ -4,20 +4,25 @@ import com.thanura.dep8.dto.UserDTO;
 import com.thanura.dep8.entity.ToDO;
 import com.thanura.dep8.entity.User;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EntityDTOConversion {
     private ModelMapper mapper;
 
     public EntityDTOConversion(ModelMapper mapper) {
+
         this.mapper = mapper;
     }
     public User getUserEntity(UserDTO userDTO){
+
         return mapper.map(userDTO, User.class);
     }
     public UserDTO getUserDTO(User user){
         return mapper.map(user,UserDTO.class);
     }
     public ToDO getToDoEntity (ToDoDTO toDoDTO){
+
         return mapper.map(toDoDTO, ToDO.class);
     }
 
