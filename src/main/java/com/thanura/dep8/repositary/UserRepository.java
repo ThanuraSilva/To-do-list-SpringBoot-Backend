@@ -6,14 +6,4 @@ import java.util.Optional;
 public interface UserRepository extends CrudRepository<User,String> {
     boolean existsUserByEmail(String email);
 
-//    @Query(value = "SELECT * FROM User WHERE id",nativeQuery = true)
-//    List<User> findUsersById(String query);
-
-    Optional<User> findUserById(String userId);
-
-    boolean existsUserById(String userId);
-
-
-
-
 }

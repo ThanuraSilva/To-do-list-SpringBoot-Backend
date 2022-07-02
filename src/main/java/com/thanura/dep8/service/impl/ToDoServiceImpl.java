@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
-public class ToDoImpl implements ToDoService {
+public class ToDoServiceImpl implements ToDoService {
 
     public final UserRepository userRepository;
 
@@ -24,7 +24,7 @@ public class ToDoImpl implements ToDoService {
 
     public final ToDoRepository toDoRepository;
 
-    public ToDoImpl(UserRepository userRepository, EntityDTOConversion transform, ToDoRepository toDoRepository) {
+    public ToDoServiceImpl(UserRepository userRepository, EntityDTOConversion transform, ToDoRepository toDoRepository) {
         this.userRepository = userRepository;
         this.transform = transform;
         this.toDoRepository = toDoRepository;
@@ -53,6 +53,6 @@ public class ToDoImpl implements ToDoService {
 
     //because of the neediness of the user
     private User getUser(String userId){
-        return userRepository.findUserById(userId).orElseThrow(()->new NotFoundException("User not found"));
+        return userRepository.findById(userId).orElseThrow(()->new NotFoundException("User not found"));
     }
 }

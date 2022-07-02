@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(UserDTO userDTO) throws NotFoundException {
-     Optional<User> optUser = userRepository.findUserById(userDTO.getId());
+     Optional<User> optUser = userRepository.findById(userDTO.getId());
      if(!optUser.isPresent()) throw new NotFoundException("No user found");
      optUser.get().setFullName(userDTO.getFullName());
      optUser.get().setPassword(userDTO.getPassword());
@@ -48,13 +48,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO getUserInfo(String userId) throws NotFoundException {
-       return userRepository.findUserById(userId).map(transform::getUserDTO)
+       return userRepository.findById(userId).map(transform::getUserDTO)
                 .orElseThrow(()->new NotFoundException("Invalid User"));
     }
 
     @Override
     public void deleteUser(String userId) throws NotFoundException {
-         if(!userRepository.existsUserById(userId))throw new NotFoundException("Invalid UserId");
+         if(!userRepository.existsById(userId))throw new NotFoundException("Invalid UserId");
 
     }
 }
