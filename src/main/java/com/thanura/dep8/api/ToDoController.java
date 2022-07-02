@@ -4,6 +4,7 @@ import com.thanura.dep8.dto.ToDoDTO;
 import com.thanura.dep8.service.ToDoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping("api/v1/users/{userId:[A-Fa-f0-9\\-]{36}}/todo")
+@Validated
 public class ToDoController {
 
     public ToDoService toDoService;
