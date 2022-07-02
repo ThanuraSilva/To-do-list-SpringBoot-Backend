@@ -11,5 +11,4 @@ public interface ToDoRepository extends CrudRepository<ToDO,Integer> {
 
     long countToDosByUser(User user);
 
-    ToDO save(ToDO toDO);
 }

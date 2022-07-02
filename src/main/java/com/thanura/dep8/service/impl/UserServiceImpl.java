@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
         //if not
         userDTO.setId(UUID.randomUUID().toString());
         //save and return the result
-        return null;
+        return transform.getUserDTO(userRepository.save(transform.getUserEntity(userDTO)));
 
 
     }
@@ -55,6 +55,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(String userId) throws NotFoundException {
          if(!userRepository.existsById(userId))throw new NotFoundException("Invalid UserId");
+         userRepository.deleteById(userId);
 
     }
 }
