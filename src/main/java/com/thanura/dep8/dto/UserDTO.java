@@ -12,8 +12,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 public class UserDTO implements Serializable {
-    @Null(message = "User ID will be automatically generated")
-    private String id;
+    private @Null(message = "User ID will be automatically generated")
+    String id;
 
     @NotNull(message = "User name cannot be an empty value")
     @Pattern(regexp = "[A-Za-z ]+")

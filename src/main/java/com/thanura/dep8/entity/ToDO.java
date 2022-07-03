@@ -2,30 +2,28 @@ package com.thanura.dep8.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Generated;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 
-import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Entity
+
 public class ToDO {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(nullable = false)
+    private Integer id;
+
     private String todo;
-    @Column()
+
     private Date date;
-    @Column()
+
     private Time time;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id",referencedColumnName = "id",nullable = false)
+
+
     private User user;
 
     public ToDO(String todo, User user) {

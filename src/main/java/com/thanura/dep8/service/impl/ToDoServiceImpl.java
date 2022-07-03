@@ -10,8 +10,9 @@ import com.thanura.dep8.service.exception.NotFoundException;
 import com.thanura.dep8.service.exception.UnauthorizedAccessException;
 import com.thanura.dep8.service.util.EntityDTOConversion;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
+
 import java.util.List;
 import java.util.stream.Collectors;
 

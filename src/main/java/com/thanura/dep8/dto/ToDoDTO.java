@@ -1,14 +1,10 @@
 package com.thanura.dep8.dto;
 
-import com.thanura.dep8.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
@@ -17,7 +13,7 @@ import java.io.Serializable;
 @Data
 public class ToDoDTO implements Serializable {
 
-    private int id;
+    private Integer id;
 
     @NotBlank(message = "To do can not be an empty value")
     private String todo;
