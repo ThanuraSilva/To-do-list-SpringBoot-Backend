@@ -8,12 +8,11 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@CrossOrigin
 @RequestMapping("api/v1/users/{userId:[A-Fa-f0-9\\-]{36}}/todo")
-@Validated
 public class ToDoController {
 
     public ToDoService toDoService;
@@ -23,7 +22,7 @@ public class ToDoController {
     }
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = "application/json",produces = "application/json")
-    public ToDoDTO addToDo(@PathVariable String userId, ToDoDTO toDo, Errors errors){
+    public ToDoDTO addToDo(@PathVariable String userId, @RequestBody @Valid ToDoDTO toDo, Errors errors){
         if (errors.hasFieldErrors()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,errors.getFieldErrors().get(0).getDefaultMessage());
         }
@@ -33,13 +32,13 @@ public class ToDoController {
 
     }
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping(path = "/{toDoID:\\d+}")
-    public void deleteToDo(@PathVariable String userId,int toDoId){
+    @DeleteMapping(path = "/{toDoId:\\d+}")
+    public void deleteToDo(@PathVariable String userId,@PathVariable int toDoId){
         toDoService.deleteToDo(userId, toDoId);
 
     }
     @GetMapping(produces = "application/json")
-    public List<ToDoDTO>grtAllNotes(String userId){
+    public List<ToDoDTO>grtAllNotes(@PathVariable String userId){
         return toDoService.getAllToDos(userId);
     }
 }

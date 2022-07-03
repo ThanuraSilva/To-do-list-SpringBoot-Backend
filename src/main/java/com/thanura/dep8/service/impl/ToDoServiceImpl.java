@@ -7,6 +7,7 @@ import com.thanura.dep8.repositary.ToDoRepository;
 import com.thanura.dep8.repositary.UserRepository;
 import com.thanura.dep8.service.ToDoService;
 import com.thanura.dep8.service.exception.NotFoundException;
+import com.thanura.dep8.service.exception.UnauthorizedAccessException;
 import com.thanura.dep8.service.util.EntityDTOConversion;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +49,12 @@ public class ToDoServiceImpl implements ToDoService {
 
     @Override
     public void deleteToDo(String userId, int toDoId) throws NotFoundException {
+        ToDO toDO =
+                toDoRepository.findById(toDoId).orElseThrow(() -> new NotFoundException("Invalid Note"));
+        if(getUser(userId) != toDO.getUser()){
+            toDoRepository.deleteById(toDoId);
+            throw new UnauthorizedAccessException("Not allow to delete the todo details");
+        }
 
     }
 

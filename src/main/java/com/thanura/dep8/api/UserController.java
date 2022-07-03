@@ -10,9 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 
-@Validated
 @RestController
-@CrossOrigin
 @RequestMapping("api/v1/users")
 public class UserController {
 
@@ -23,7 +21,7 @@ public class UserController {
     }
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = "application/json",produces = "application/json")
-    public UserDTO registerUser(@RequestBody @Valid UserDTO user, Errors errors){
+    public UserDTO registerUser(@RequestBody @Validated UserDTO user, Errors errors){
       if(errors.hasFieldErrors()){
           throw new ResponseStatusException(HttpStatus.BAD_REQUEST,errors.getFieldErrors()
                   .get(0).getDefaultMessage());
