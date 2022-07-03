@@ -16,7 +16,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 public class ToDoDTO implements Serializable {
-
     private int id;
 
     @NotBlank(message = "To do can not be an empty value")
